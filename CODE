@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Resume Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .resume-output {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI-Powered Resume Builder</h1>
+    </header>
+    
+    <div class="container">
+        <h2>Enter Your Details</h2>
+        <form id="resume-form">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <input type="url" id="linkedin" placeholder="LinkedIn Profile" required>
+            <textarea id="skills" placeholder="Skills (comma-separated)" required></textarea>
+            <textarea id="experience" placeholder="Work Experience" required></textarea>
+            <textarea id="education" placeholder="Education" required></textarea>
+            <textarea id="projects" placeholder="Projects" required></textarea>
+            <button type="submit">Generate Resume</button>
+        </form>
+    </div>
+    
+    <div class="container resume-output" id="resume-output">
+        <h2>Your Resume</h2>
+        <div id="generated-resume"></div>
+    </div>
+    
+    <script>
+        document.getElementById("resume-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const linkedin = document.getElementById("linkedin").value;
+            const skills = document.getElementById("skills").value;
+            const experience = document.getElementById("experience").value;
+            const education = document.getElementById("education").value;
+            const projects = document.getElementById("projects").value;
+            
+            document.getElementById("generated-resume").innerHTML = `
+                <h2>${name}</h2>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>LinkedIn:</strong> <a href="${linkedin}" target="_blank">${linkedin}</a></p>
+                <h3>Skills</h3><p>${skills}</p>
+                <h3>Work Experience</h3><p>${experience}</p>
+                <h3>Education</h3><p>${education}</p>
+                <h3>Projects</h3><p>${projects}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
